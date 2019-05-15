@@ -1,0 +1,56 @@
+@mixin screen($range1: false, $size1: false, $range2: false, $size2: false, $orientation: landscape) {
+    @if $orientation == all or $orientation != all and $size1 < $screen-sm-min {
+        @media screen and (#{$range1}: $size1) and (#{$range2}: $size2) { @content; }
+    }
+    @else {
+        @media screen and (#{$range1}: $size1) and (#{$range2}: $size2) and (orientation: $orientation) { @content; }
+    }
+}
+@mixin screen-max($max, $size, $orientation: landscape) {
+    @media screen and (max-#{$max}: $size) and (orientation: $orientation) { @content; }
+}
+@mixin screen-min($min, $size, $orientation: landscape) {
+    @media screen and (min-#{$min}: $size) and (orientation: $orientation) { @content; }
+}
+@mixin xs-only() {
+    @media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) { @content; }
+}
+@mixin max-xs() {
+    @media screen and (max-width: $screen-xs-max) { @content; }
+}
+@mixin xs-sm() {
+    @media screen and (min-width: $screen-xs-min) and (max-width: $screen-sm-max) { @content; }
+}
+@mixin sm-only() {
+    @media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+}
+@mixin min-sm() {
+    @media screen and (min-width: $screen-sm-min) { @content; }
+}
+@mixin max-sm() {
+    @media screen and (max-width: $screen-sm-max) { @content; }
+}
+@mixin sm-md() {
+    @media screen and (min-width: $screen-sm-min) and (max-width: $screen-md-max) { @content; }
+}
+@mixin md-only() {
+    @media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; }
+}
+@mixin min-md() {
+    @media screen and (min-width: $screen-md-min) { @content; }
+}
+@mixin max-md() {
+    @media screen and (max-width: $screen-md-max) { @content; }
+}
+@mixin lg-only() {
+    @media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) { @content; }
+}
+@mixin min-lg() {
+    @media screen and (min-width: $screen-lg-min) { @content; }
+}
+@mixin max-lg() {
+    @media screen and (max-width: $screen-lg-max) { @content; }
+}
+@mixin smp-lg-only() {
+    @media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max), screen and (min-width: $screen-xs-min) and (max-width: $screen-sm-max) { @content; }
+}

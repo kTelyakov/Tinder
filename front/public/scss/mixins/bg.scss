@@ -1,0 +1,8 @@
+@mixin mainGradient {
+    background: rgb(16,28,42);
+    background: linear-gradient(180deg, rgba(16,28,42,1) 0%, rgba(70,87,102,1) 50%, rgba(89,101,108,1) 100%);
+}
+
+@mixin bg($url) {
+    background-image:url('#{$images}/#{$url}');
+}

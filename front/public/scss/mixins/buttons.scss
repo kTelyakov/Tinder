@@ -1,0 +1,7 @@
+@mixin -flatted($borderColor){
+    border: 1px solid $borderColor;
+    background: transparent;
+    color: $borderColor;
+}
+
+

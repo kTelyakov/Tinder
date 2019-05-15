@@ -1,0 +1,14 @@
+@mixin font($fontSize: false, $lineHeight: false, $fontWeight: false, $fontStyle: false){
+    @if $fontSize {
+        font-size:#{$fontSize}px;
+    }
+    @if $lineHeight {
+        line-height:#{$lineHeight}px;
+    }
+    @if $fontWeight {
+        font-weight:$fontWeight;
+    }
+    @if $fontStyle {
+        font-style:$fontStyle;
+    }
+}

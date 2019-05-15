@@ -1,0 +1,56 @@
+@mixin bg($url: '#{$images}/#{$sprites}', $size: false, $position: false, $repeat: no-repeat, $color: false) {
+    @if $url {
+        @if $url == sprites {
+            background-image:url('#{$images}/#{$sprites}');
+        }
+        @else if $url == spritesLive {
+            background-image:url('#{$images}/#{$spritesLive}');
+        }
+        @else if $url == spritesStatic {
+            background-image:url('#{$images}/#{$spritesStatic}');
+        }
+        @else if $url == spritesTour {
+            background-image:url('#{$images}/#{$spritesTour}');
+        }
+        @else if $url == spritesArrows {
+            background-image:url('#{$images}/#{$spritesArrows}');
+        }
+        @else if $url == spritesFlags {
+            background-image:url('#{$images}/#{$spritesFlags}');
+        }
+        @else {
+            background-image:url('#{$images}/#{$url}');
+        }
+    }
+    @if $size {
+        background-size:$size;
+    }
+    @if $position {
+        background-position:$position;
+    }
+    @if $repeat {
+        background-repeat:$repeat;
+    }
+    @if $color {
+        background-color:$color;
+    }
+}
+@mixin bg-cover($bg: false, $center: false) {
+    @if ($center){
+        @extend .bg-cover-center;
+    }
+    @else {
+        @extend .bg-cover;
+    }
+    @if $bg {
+        background-image:url(#{$bg});
+    }
+}
+@mixin object($fit: false, $pos: false) {
+    @if $fit {
+        object-fit:#{$fit};
+    }
+    @if $pos {
+        object-position:#{$pos};
+    }
+}
