@@ -9,7 +9,7 @@ let browserSync = require('browser-sync').create()
 let reload = browserSync.reload
 let jade = require('gulp-jade')
 
-gulp.task('serve', function() {
+gulp.task('serve', function() { 
 	browserSync.init({
 		open: false,
 		notify: false,
