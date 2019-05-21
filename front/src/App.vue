@@ -1,26 +1,30 @@
 <template>
   <div id="app">
-    <header/>
-    <index/>    
-    <router-view/>
+    <div class="main-section container mt-2">
+        <div class="ui grid">
+            <Sidebar />
+            <router-view/>      
+        </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import index from './components/index.vue'
-import header from './components/header.vue'
+import Sidebar from './components/sidebar.vue'
+import Index from './components/index.vue'
 
 export default {
   name: 'App',
   components: {
-    index,
-    header
-  }
+    Sidebar,
+    Index
+  }  
 }
 </script>
 
 <style lang="scss">
-@import './assets/scss/main';
+@import './assets/scss/index';
 .test {
   h2 {
     display: none;

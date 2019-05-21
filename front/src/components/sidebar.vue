@@ -1,16 +1,19 @@
 <template>
-    <div class="sidebar">
-        <div class="sidebar-list ui vertical menu">
-            <a class="sidebar-list__item item active" href="index.html">Обучать модель </a>
-            <a class="sidebar-list__item item" href="messages.html">Мои сообщения</a>
-            <a class="sidebar-list__item item" href="model-results.html">Результаты модели
-                <div class="ui teal label">4</div>
-            </a>
+    <div class="three wide column">
+        <div class="sidebar">
+            <div class="sidebar-list ui vertical menu">
+                <router-link to="/" class="sidebar-list__item item">Обучать модель</router-link>
+                <router-link to="/messages" class="sidebar-list__item item">Сообщения</router-link>
+                <router-link to="/prediction" class="sidebar-list__item item">
+                    <div class="ui teal label">4</div>
+                    Предсказание
+                </router-link>                
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    name: 'sidebar'
 }
 </script>

@@ -22,7 +22,9 @@
 @import './states/sizes.scss';
 
 // Libs
-@import '../libs/semantic.min.css';
+@import './semantic';
+@import './test';
+
 
 // Layouts
 @import './main.scss';
