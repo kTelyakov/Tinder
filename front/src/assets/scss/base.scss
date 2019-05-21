@@ -1,0 +1,45 @@
+
+$roboto: 'Roboto',Arial,Helvetica,sans-serif;
+
+// Colors
+$black: #000;
+$blackLight: #2e2e2e;
+$white: #fff;
+$smokeLight: #f2f5fa;
+$smoke: #ebebeb;
+$smokeDark: #c1c1c1;
+$greyLight: #959595;
+$grey: #3e3e3e;;
+$greyDark: #616161;
+$greyDarken: #4b4b4b;
+$orange: #f37021;
+$orangeBright: #ff6a13;
+$yellow: #ffeb3b;
+$brown: #a54e18;
+$greenLight: #3ebf07;
+$green: #00ab1c;
+$greenDark: #81b36b;
+$red: #d00000;
+$blue: #2166f3;
+$blueLight: #2e9aff;
+
+// Borders
+$border-radius: 5px;
+
+$wrapperWidth: 1340px;
+$headerHeight: 68px;
+$menuWidth: 200px;
+$menuMdWidth: 260px;
+$menuCompactMdWidth: 48px;
+$sidebarWidth: 235px;
+$sidebarMdWidth: 290px;
+$homeSliderItemWidth: 150px;
+
+$screen-xs-min: 320px;
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+$screen-lg-max: 1339px;

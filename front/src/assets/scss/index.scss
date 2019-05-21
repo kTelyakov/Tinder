@@ -1,0 +1,33 @@
+@import './base.scss';
+@import './normalize.scss';
+@import './reset.scss';
+
+
+
+// Mixins
+@import './mixins/bg.scss';
+@import './mixins/flexbox.scss';
+@import './mixins/image.scss';
+@import './mixins/font.scss';
+@import './mixins/buttons.scss';
+@import './mixins/text.scss';
+@import './mixins/transitions.scss';
+@import './mixins/paddings.scss';
+@import './mixins/responsive.scss';
+
+// States
+@import './states/flexbox.scss';
+@import './states/margin.scss';
+@import './states/paddings.scss';
+@import './states/sizes.scss';
+
+// Libs
+@import '../libs/semantic.min.css';
+
+// Layouts
+@import './main.scss';
+
+
+// Ui
+@import './buttons.scss'
+
