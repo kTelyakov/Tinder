@@ -10,11 +10,11 @@
                     <h2>Элементы для обучения закончены</h2>
                 </div>
                 <div class="card w50p" v-else>
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg" /></div>
+                    <div class="image"><img :src="currentGirl.link" /></div>
                     <div class="content">
-                        <div class="header">{{ currentGirl.name }}<span class="right floated ui label">{{ currentGirl.age }} лет</span></div>
-                        <div class="meta">{{ currentGirl.prof }}</div>
-                        <div class="description">{{ currentGirl.descr }}</div>
+                        <div class="header">Test<span class="right floated ui label">22 лет</span></div>
+                        <div class="meta">prof</div>
+                        <div class="description">descr</div>
                     </div>
                     <div class="extra content">
                         <div class="ui buttons flex -center">
@@ -36,36 +36,22 @@ export default {
     name: 'index',
     data() {
         return {
-            girls: [
-                {
-                    name: 'Света',
-                    age: '27',
-                    prof: 'Дизайнер',
-                    descr: 'lorem ipsum asd',
-                    img: "https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"
-                },
-                {
-                    name: 'Света2',
-                    age: '28',
-                    prof: 'Дизайнер',
-                    descr: 'lorem ipsum asd',
-                    img: "https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"
-                },
-                {
-                    name: 'Света3',
-                    age: '29',
-                    prof: 'Дизайнер',
-                    descr: 'lorem ipsum asd',
-                    img: "https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"
-                }
-            ],
+            girls: [],
             currentGirl: null,
             count: 0,
             dataEmpty: false
         }
     },
     created() {
-        this.currentGirl = this.girls[0]
+        
+    },
+    mounted() {
+        console.log('mounted...')
+        this.$store.dispatch('GET_GIRLS').then(()=>{
+            this.girls = this.$store.getters.GIRLS
+            this.currentGirl = this.girls[0]
+        }).catch()
+        
     },
     methods: {
         increase() {
@@ -79,6 +65,11 @@ export default {
     watch: {
         count: function() {
             this.currentGirl = this.girls[this.count]
+        }
+    },
+    computed: {
+        girlsList(){
+            return this.$store.getters.GIRLS
         }
     }
 }
