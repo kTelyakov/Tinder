@@ -1,4 +1,4 @@
-
+$montserrat:  'Montserrat', sans-serif;
 $roboto: 'Roboto',Arial,Helvetica,sans-serif;
 
 // Colors
@@ -22,9 +22,20 @@ $greenDark: #81b36b;
 $red: #d00000;
 $blue: #2166f3;
 $blueLight: #2e9aff;
+$bgColor: #f5f7fa;
 
 // Borders
-$border-radius: 5px;
+$border-radius: 8px;
+
+// CARDS
+$cardHeight: 458px;
+$cardWidth: 375px;
+$cardHeader: 32px;
+$cardAge: 32px;
+
+// BOX SHADOW
+$box-shadow: 0 2px 10px 0 rgba(155,155,155,0.77);
+
 
 $wrapperWidth: 1340px;
 $headerHeight: 68px;

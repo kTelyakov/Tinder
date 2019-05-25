@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 @import './base.scss';
 
 body {
-    font-family: $roboto;
-    // background-color: #8fc1da;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: $bgColor;
 }
 
+.card {
+    border-radius: $border-radius !important;
+}
+
+h1,h2,h3,h4,h5,h6,p,span,li,div {
+    font-family: 'Ubuntu', sans-serif !important;
+}
 .container {
     width: 100%;
     padding-right: 15px;

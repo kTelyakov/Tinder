@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="main-section container mt-2">
+    <div class="main-section">
         <div class="ui grid">
             <Sidebar />
             <router-view/>      

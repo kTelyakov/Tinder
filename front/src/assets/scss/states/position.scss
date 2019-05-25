@@ -1,0 +1,72 @@
+.pos-abs {
+    position: absolute !important;
+}
+.pos-fit {
+    @extend .pos-abs;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.pos-fit {
+    @extend .pos-abs;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.pos-tb {
+    @extend .pos-abs;
+    top:0;
+    bottom:0;
+}
+.pos-lr {
+    @extend .pos-abs;
+    left:0;
+    right:0;
+}
+.pos-tr {
+    @extend .pos-abs;
+    top:0;
+    right:0;
+}
+.pos-br {
+    @extend .pos-abs;
+    bottom:0;
+    right:0;
+}
+.pos-tl {
+    @extend .pos-abs;
+    top:0;
+    left:0;
+}
+.pos-bl {
+    @extend .pos-abs;
+    bottom:0;
+    left:0;
+}
+.pos-centered {
+    @extend .pos-abs;
+    top:50%;
+    left:50%;
+    transform:translate3d(-50%, -50%, 0);
+}
+.pos-centered-h {
+    @extend .pos-abs;
+    left:50%;
+    transform:translateX(-50%);
+}
+.pos-centered-v {
+    @extend .pos-abs;
+    top:50%;
+    transform:translateY(-50%);
+}
+.pos-fixed {
+    position: fixed !important;
+}
+.pos-rel {
+    position: relative !important;
+}
+.pos-static {
+    position: static !important;
+}

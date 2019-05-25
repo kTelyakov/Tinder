@@ -1,89 +1,57 @@
 <template>
     <div class="thirteen wide column">
         <div class="content ui segment">
+            <!-- <Modal /> -->
             <h1 class="ui header">Предсказание модели</h1>
-            <hr>
             <div class="ui link cards flex -center pt-10px pb-10px pl-5px pr-5px">
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
+                <div v-for="(girl, i) in prediction" :key="i" :class="`card ${ i%3 === 0 ? 'mb-10px' : '' }`">
+                    <div class="images" style="height:290px;overflow:hidden;">
+                        <img :src="girl.person.photos[0].link">                        
+                    </div>
                     <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
+                        <div class="header">{{ girl.person.name }}
+                            <span class="right floated ui label">{{ girl.person.age }} лет</span>
+                            <span :class="`right floated ui label mr-5px ${girl.person.model_result === 'like' ? 'green' : 'red'} `">{{ girl.person.model_result }}</span>                            
+                        </div>
                     </div>
                     <div class="extra content">
                         <div class="ui buttons flex -center">
-                            <div class="ui label green">Нравится</div>
+                            <div class="ui button teal" @click="showModal(girl._id)">Подробнее</div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
-                    <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
+                    <div class="modal pos-centered-v w50px h50p" :ref="girl._id">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias maxime in natus non, odit accusamus recusandae, architecto aliquid et quia quidem temporibus, corrupti vero debitis sit enim voluptatem saepe quae!</p>
                     </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui label red">не нравится</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
-                    <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui label red">не нравится</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
-                    <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui label green">Нравится</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
-                    <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui label red">не нравится</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="image"><img src="https://www.barahla.net/images/photo/4/20150829/4019910/big/144086134176636500_big.jpg"></div>
-                    <div class="content">
-                        <div class="header">Елена Головач<span class="right floated ui label">27 лет</span></div>
-                        <div class="meta">дизайнер</div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui label green">Нравится</div>
-                        </div>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Modal from '../modal'
 export default {
-    
+    data() {
+        return {
+            prediction: []
+        }
+    },
+    components: {
+        Modal
+    },
+    mounted() {
+        this.$store.dispatch('GET_PREDICTION').then(()=>{
+            this.prediction = this.$store.getters.PREDICTION
+            console.log(this.prediction)
+        }).catch(()=>{
+            console.log('get prediction from store failed...')
+        })
+    },
+    methods: {
+        showModal() {
+
+        }
+    }
 }
 </script>
 

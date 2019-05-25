@@ -34,6 +34,15 @@ MongoClient.connect( db.url, (err, client) => {
             response.send(collection)
         })       
     })
+    app.get('/api/prediction', (req, response) => {
+        let collection = {}        
+        db.collection('recommendation_model').find().toArray(function(err, res) {
+            if(err) console.log(err);
+            collection = Object.assign({}, res)
+            console.log(collection)
+            response.send(collection)
+        })       
+    })
     
 })
 
