@@ -43,6 +43,14 @@ MongoClient.connect( db.url, (err, client) => {
             response.send(collection)
         })       
     })
+    app.get('/api/saveGirl', (req, response) => {
+        console.log(req.query.id)
+        let girlId = Number(req.query.id)
+        let girlResult = Number(req.query.result)
+        let collection = {}        
+        db.collection('train_img_set').updateOne({id: girlId}, {$set: {result: girlResult}})
+        
+    })
     
 })
 

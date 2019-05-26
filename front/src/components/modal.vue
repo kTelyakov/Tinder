@@ -16,7 +16,7 @@
             </slot>
           </div>
 
-          <div class="ui button w50p flex -middle -center red text-center" @click="close()">ЗАкрыть</div>
+          <div class="ui button w50p flex -middle -center red text-center" @click="close()">Не согласиться</div>
         </div>
       </div>
     </div>

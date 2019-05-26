@@ -9,7 +9,7 @@
                 <div v-if="loading">
                     <h2>Идет загрузка...</h2>
                 </div>
-                <card name="SVETA" age="32" :img="currentGirl.link" @increase="increaseCounter" :descr="false"/>
+                <card name="SVETA" age="32" :img="currentGirl.link" @increase="increaseCounter" @result="resultModel" :descr="false"/>
                 <!-- <div class="card w50p" v-else>
                     <div class="image">
                         <img :src="currentGirl.link" />
@@ -58,28 +58,32 @@ export default {
     },
     methods: {
         increaseCounter(data) {
-            if( this.count === this.girls.length-1) {
+            if( Object.keys(this.girls).length === 0 ) {
                 alert('Закончились данные')
                 return this.dataEmpty = true
             }
             return this.count = data
+        },
+        resultModel(result) {
+            // console.log('resultModel ', result)
+            this.$store.dispatch('SET_GIRL_STAT', {id: this.currentGirl.id, result: result});
         }
     },
     watch: {
         count: function() {
-            console.log(this.currentGirl.link)
-            if(!this.currentGirl.link) return
             this.currentGirl = this.girls[this.count]
             delete this.girls[this.count]
-            console.log(this.girls)
+            // console.log(this.girls)
+            
             
         },
         currentGirl: function(el) {
-            if( this.count === this.girls.length-1) {
+            let dataLength = Object.keys(this.girls).length
+            if( dataLength === 0) {
                 alert('Закончились данные')
                 return this.dataEmpty = true
             }
-            console.log('currentGirl')
+            // console.log('currentGirl')
         }
 
     }

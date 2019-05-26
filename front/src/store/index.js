@@ -28,6 +28,9 @@ export const store = new Vuex.Store({
 		ADD_GIRLS : (state,payload) => {
 			state.allGirls.push(payload)
 		},
+		ADD_GIRL_STAT: (state, payload) => {
+			state.allGirls.push(payload)
+		}
 	},
 	actions : {
 		GET_GIRLS : async (context,payload) => {
@@ -37,6 +40,10 @@ export const store = new Vuex.Store({
 		GET_PREDICTION : async (context,payload) => {
 			let { data } = await Axios.get('http://localhost:8081/api/prediction')
 			context.commit('SET_PREDICTION',data)
+		},
+		SET_GIRL_STAT: async (context, payload) => {
+			let { data } = await Axios.get(`http://localhost:8081/api/saveGirl?result=${payload.result}&id=${payload.id}`)
+			context.commit('ADD_GIRL_STAT', data)
 		}
 		// SAVE_GIRLS : async (context,payload) => {
 		// 	let { data } = await Axios.post('http://yourwebsite.com/api/todo')

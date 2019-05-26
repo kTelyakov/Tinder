@@ -18,10 +18,10 @@
         </div>
         <div class="tinder-card-buttons flex -middle -center mt-15px">
             <div class="tinder-card-buttons__button flex -middle -center mr-10px">
-                <i class="fas fa-times -pink"></i>
+                <i class="fas fa-times -pink" @click="increase(0)"></i>
             </div>
             <div class="tinder-card-buttons__button flex -middle -center ">
-                <i class="fas fa-heart -salad" @click="increase()"></i>
+                <i class="fas fa-heart -salad" @click="increase(1)"></i>
             </div>
         </div>
         <slot/>
@@ -36,7 +36,7 @@ export default {
             required: true
         },
         age: {
-            type: Number,
+            type: [Number,String],
             required: true
         },
         img: {
@@ -51,7 +51,6 @@ export default {
         likeStat: {
             type: Boolean
         }
-
     },
     data() {
         return {
@@ -59,14 +58,10 @@ export default {
         }
     },
     methods: {
-        increase() {
-            // if( this.count === this.girls.length-1) {
-            //     alert('Закончились данные')
-            //     return this.dataEmpty = true
-            // }
-            console.log('incarease...')
+        increase(res) {
             this.count = this.count + 1
             this.$emit('increase', this.count)
+            this.$emit('result', res)
         },
         modal() {
             this.$emit('showModal')
