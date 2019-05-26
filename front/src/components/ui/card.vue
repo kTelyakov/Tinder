@@ -2,7 +2,12 @@
     <div>
         <div class="tinder-card pos-rel">
             <img :src="img" />
-             <span v-if="like" :class="`ui label pos-tl m-1 ${likeStat ? 'green' : 'red'}`">{{ likeStat ? 'Like' : 'Pass' }}</span>
+            <div class="tinder-card__slider">
+                <div class="tinder-card__slider-item"/>
+                <div class="tinder-card__slider-item"/>
+                <div class="tinder-card__slider-item"/>
+            </div>
+            <span v-if="like" :class="`ui label pos-tl m-1 ${likeStat ? 'green' : 'red'}`">{{ likeStat ? 'Like' : 'Pass' }}</span>
             <div class="tinder-card__info" v-if="descr">
                 <div class="tinder-card__info-text pos-rel flex -middle">
                     <h4 class="m0">{{ name }}</h4>
@@ -80,6 +85,14 @@ export default {
             box-shadow: $box-shadow;
             position: relative;
             text-align: -webkit-center;
+            &__slider {
+                &-item {
+                    width: 100%;
+                    border-radius: 50%;
+                    height: 10px;
+                    border: 1px solid red;
+                }
+            }
             &-buttons {
                 &__button {
                     border-radius: 100%;
