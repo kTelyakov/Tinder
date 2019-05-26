@@ -1,7 +1,6 @@
 <template>
     <div class="fourteen wide column p-5">
         <div class="content ui">
-            <!-- <Modal /> -->
             <h1 class="ui header flex -middle -center w100p">Предсказание модели</h1>
             <div class="ui link cards flex -center pt-10px pb-10px pl-5px pr-5px"> 
                 <card v-for="(girl, i) in prediction" :key="i" 
@@ -11,26 +10,15 @@
                     :descr="true"
                     like
                     :likeStat="girl.person.model_result === 'like' ? true : false" 
-                    class="mr-15px mb-15px"/>
-                <!-- <div v-for="(girl, i) in prediction" :key="i" :class="`card ${ i%3 === 0 ? 'mb-10px' : '' }`">
-                    <div class="images" style="height:290px;overflow:hidden;">
-                        <img :src="girl.person.photos[0].link">                        
-                    </div>
-                    <div class="content">
-                        <div class="header">{{ girl.person.name }}
-                            <span class="right floated ui label">{{ girl.person.age }} лет</span>
-                            <span :class="`right floated ui label mr-5px ${girl.person.model_result === 'like' ? 'green' : 'red'} `">{{ girl.person.model_result }}</span>                            
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui buttons flex -center">
-                            <div class="ui button teal" @click="showModal(girl._id)">Подробнее</div>
-                        </div>
-                    </div>
-                    <div class="modal pos-centered-v w50px h50p" :ref="girl._id">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias maxime in natus non, odit accusamus recusandae, architecto aliquid et quia quidem temporibus, corrupti vero debitis sit enim voluptatem saepe quae!</p>
-                    </div>
-                </div>                 -->
+                    @showModal="QshowModal({
+                        name: girl.person.name,
+                        age: girl.person.age,
+                        job: girl.person.job,
+                        bio: girl.person.bio
+                    })"
+                    class="mr-15px mb-15px">
+                </card>
+                <Modal :obj="modalData" v-if="showM" @closeModal="showM = false" />
             </div>
         </div>
     </div>
@@ -42,7 +30,9 @@ import card from '../ui/card'
 export default {
     data() {
         return {
-            prediction: []
+            prediction: [],
+            showM: false,
+            modalData: {}
         }
     },
     components: {
@@ -58,8 +48,11 @@ export default {
         })
     },
     methods: {
-        showModal() {
-
+        QshowModal(obj) {
+            console.log('QshowMOdal....')
+            this.modalData = Object.assign({}, obj)
+            console.log('this.modalData ', this.modalData.name)
+            this.showM = true
         }
     }
 }

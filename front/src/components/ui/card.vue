@@ -8,7 +8,7 @@
                     <h4 class="m0">{{ name }}</h4>
                     <div class="tinder-card__info-text-age ui label white big c-white ml-10px">{{ age }}</div>
                 </div>            
-                <i class="fas fa-info-circle"></i>
+                <i class="fas fa-info-circle" @click="modal()"></i>
             </div>        
         </div>
         <div class="tinder-card-buttons flex -middle -center mt-15px">
@@ -19,6 +19,7 @@
                 <i class="fas fa-heart -salad" @click="increase()"></i>
             </div>
         </div>
+        <slot/>
     </div>
 </template>
 <script>
@@ -30,7 +31,7 @@ export default {
             required: true
         },
         age: {
-            type: String,
+            type: Number,
             required: true
         },
         img: {
@@ -61,6 +62,9 @@ export default {
             console.log('incarease...')
             this.count = this.count + 1
             this.$emit('increase', this.count)
+        },
+        modal() {
+            this.$emit('showModal')
         }
     }
 }

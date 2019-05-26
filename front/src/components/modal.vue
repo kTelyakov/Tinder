@@ -5,23 +5,18 @@
 
           <div class="modal-header">
             <slot name="header">
-              default header
+              {{ obj.name }}
+              <span class="ui label ">{{ obj.age }}</span>
             </slot>
           </div>
           <div class="modal-body">
             <slot name="body">
-              <img  src="https://images-ssl.gotinder.com/5ca4c8f1e9a26316002be8be/1080x1350_e03a9f1f-6963-4fd6-88bf-5e3c05911eed.jpg"/>
+              <p>{{ obj.job }}</p>
+              <p>{{ obj.bio }}</p>
             </slot>
           </div>
 
-          <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
-          </div>
+          <div class="ui button w50p flex -middle -center red text-center" @click="close()">ЗАкрыть</div>
         </div>
       </div>
     </div>
@@ -45,15 +40,14 @@ export default {
         }
     },
     props: {
-        photos: {
-            type: Array
-        },
-        job: {
-            type: String
-        },
-        bio: {
-            type: String
+        obj: {
+          type: Object
         }
+    },
+    methods: {
+      close() {
+        this.$emit('closeModal');
+      }
     }
 }
 </script>
@@ -80,7 +74,7 @@ export default {
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
