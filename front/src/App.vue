@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <div class="main-section">
-        <div class="ui grid">
-            <Sidebar />
-            <router-view/>      
-        </div>
-    </div>
-    
+      <div class="ui grid">
+        <Sidebar />
+        <router-view/>      
+      </div>
+    </div>    
   </div>
 </template>
 

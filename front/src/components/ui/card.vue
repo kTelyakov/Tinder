@@ -1,13 +1,24 @@
 <template>
-    <div class="tinder-card pos-rel">
-        <img src="https://images-ssl.gotinder.com/5ca4c8f1e9a26316002be8be/1080x1350_e03a9f1f-6963-4fd6-88bf-5e3c05911eed.jpg" />
-        <div class="tinder-card__info">
-            <div class="tinder-card__info-text pos-rel flex -middle">
-                <h4 class="">{{ name }}</h4>
-                <div class="tinder-card__info-text-age ui label white ">{{ age }}</div>
-            </div>            
-            <i class="fas fa-info-circle"></i>
-        </div>        
+    <div>
+        <div class="tinder-card pos-rel">
+            <img :src="img" />
+             <span v-if="like" :class="`ui label pos-tl m-1 ${likeStat ? 'green' : 'red'}`">{{ likeStat ? 'Like' : 'Pass' }}</span>
+            <div class="tinder-card__info" v-if="descr">
+                <div class="tinder-card__info-text pos-rel flex -middle">
+                    <h4 class="m0">{{ name }}</h4>
+                    <div class="tinder-card__info-text-age ui label white big c-white ml-10px">{{ age }}</div>
+                </div>            
+                <i class="fas fa-info-circle"></i>
+            </div>        
+        </div>
+        <div class="tinder-card-buttons flex -middle -center mt-15px">
+            <div class="tinder-card-buttons__button flex -middle -center mr-10px">
+                <i class="fas fa-times -pink"></i>
+            </div>
+            <div class="tinder-card-buttons__button flex -middle -center ">
+                <i class="fas fa-heart -salad" @click="increase()"></i>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -21,6 +32,35 @@ export default {
         age: {
             type: String,
             required: true
+        },
+        img: {
+            type: String
+        },
+        descr: {
+            type: Boolean
+        },
+        like: {
+            type: Boolean
+        },
+        likeStat: {
+            type: Boolean
+        }
+
+    },
+    data() {
+        return {
+            count: 0
+        }
+    },
+    methods: {
+        increase() {
+            // if( this.count === this.girls.length-1) {
+            //     alert('Закончились данные')
+            //     return this.dataEmpty = true
+            // }
+            console.log('incarease...')
+            this.count = this.count + 1
+            this.$emit('increase', this.count)
         }
     }
 }
@@ -35,6 +75,31 @@ export default {
             border-radius: $border-radius;
             box-shadow: $box-shadow;
             position: relative;
+            text-align: -webkit-center;
+            &-buttons {
+                &__button {
+                    border-radius: 100%;
+                    background-color: $white;
+                    box-shadow: 0 4px 9px 0 rgba(213,218,224,.3);
+                    width: 70px;
+                    height: 70px;
+                    transition: opacity .25s ease,-webkit-transform .25s ease,-webkit-filter .25s ease;
+                    transition: transform .25s ease,filter .25s ease,opacity .25s ease;
+                    transition: transform .25s ease,filter .25s ease,opacity .25s ease,-webkit-transform .25s ease,-webkit-filter .25s ease;
+                    i {
+                        font-size: 35px;
+                        &.-salad {
+                            color: $salad;
+                        }
+                        &.-pink {
+                            color: $pink;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }                
+            }
             &__info {
                 padding: 20px;
                 position: absolute;
@@ -44,6 +109,9 @@ export default {
                 i {
                     font-size: $cardHeader;
                     color: $white;
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
                 &-text {
                     @include flex(row, space-between, center);
@@ -59,6 +127,8 @@ export default {
                 
             }
             img {
+                width: 100%;
+                height: 100%;
                 border-radius: $border-radius;
             }
         }

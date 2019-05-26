@@ -1,17 +1,15 @@
-<template>
-    
-                   
-    <div class="thirteen wide column poer">
+<template>                  
+    <div class="thirteen wide column poer mt-5">
         <div class="content">
             <!-- <h1 class="ui header flex -center">Осталось обучить: {{ Object.keys(this.girls).length }} </h1> -->
             <div class="ui link cards flex -center pt-10px pb-10px pl-5px pr-5px pt-15px">
-                <card name="SVETA" age="32"/>
-                <!-- <div v-if="dataEmpty">
+                <div v-if="dataEmpty">
                     <h2>Элементы для обучения закончены</h2>
                 </div>
                 <div v-if="loading">
                     <h2>Идет загрузка...</h2>
-                </div> -->
+                </div>
+                <card name="SVETA" age="32" :img="currentGirl.link" @increase="increaseCounter" :descr="false"/>
                 <!-- <div class="card w50p" v-else>
                     <div class="image">
                         <img :src="currentGirl.link" />
@@ -55,23 +53,35 @@ export default {
             console.log('---------------------')
             console.log(Object.keys(this.girls).length)
         }).catch()
+
         
     },
     methods: {
-        increase() {
+        increaseCounter(data) {
             if( this.count === this.girls.length-1) {
                 alert('Закончились данные')
                 return this.dataEmpty = true
             }
-            return this.count = this.count + 1
+            return this.count = data
         }
     },
     watch: {
         count: function() {
+            console.log(this.currentGirl.link)
+            if(!this.currentGirl.link) return
             this.currentGirl = this.girls[this.count]
             delete this.girls[this.count]
             console.log(this.girls)
+            
+        },
+        currentGirl: function(el) {
+            if( this.count === this.girls.length-1) {
+                alert('Закончились данные')
+                return this.dataEmpty = true
+            }
+            console.log('currentGirl')
         }
+
     }
 }
 </script>

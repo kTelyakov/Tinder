@@ -1,5 +1,5 @@
 <template>
-    <div class="three wide column">
+    <div class="two wide column">
         <div class="sidebar">
             <div class="sidebar-list ui vertical menu">
                 <router-link to="/" class="sidebar-list__item item">
@@ -22,3 +22,15 @@ export default {
     name: 'sidebar'
 }
 </script>
+
+<style lang="scss">
+
+.sidebar {
+    &-list {
+        height: 100vh !important;
+        position: fixed;
+    }    
+}
+
+</style>
+

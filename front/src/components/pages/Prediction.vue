@@ -1,10 +1,18 @@
 <template>
-    <div class="thirteen wide column">
-        <div class="content ui segment">
+    <div class="fourteen wide column p-5">
+        <div class="content ui">
             <!-- <Modal /> -->
-            <h1 class="ui header">Предсказание модели</h1>
-            <div class="ui link cards flex -center pt-10px pb-10px pl-5px pr-5px">
-                <div v-for="(girl, i) in prediction" :key="i" :class="`card ${ i%3 === 0 ? 'mb-10px' : '' }`">
+            <h1 class="ui header flex -middle -center w100p">Предсказание модели</h1>
+            <div class="ui link cards flex -center pt-10px pb-10px pl-5px pr-5px"> 
+                <card v-for="(girl, i) in prediction" :key="i" 
+                    :img="girl.person.photos[0].link" 
+                    :name="girl.person.name" 
+                    :age="girl.person.age" 
+                    :descr="true"
+                    like
+                    :likeStat="girl.person.model_result === 'like' ? true : false" 
+                    class="mr-15px mb-15px"/>
+                <!-- <div v-for="(girl, i) in prediction" :key="i" :class="`card ${ i%3 === 0 ? 'mb-10px' : '' }`">
                     <div class="images" style="height:290px;overflow:hidden;">
                         <img :src="girl.person.photos[0].link">                        
                     </div>
@@ -22,7 +30,7 @@
                     <div class="modal pos-centered-v w50px h50p" :ref="girl._id">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias maxime in natus non, odit accusamus recusandae, architecto aliquid et quia quidem temporibus, corrupti vero debitis sit enim voluptatem saepe quae!</p>
                     </div>
-                </div>                
+                </div>                 -->
             </div>
         </div>
     </div>
@@ -30,6 +38,7 @@
 
 <script>
 import Modal from '../modal'
+import card from '../ui/card'
 export default {
     data() {
         return {
@@ -37,7 +46,8 @@ export default {
         }
     },
     components: {
-        Modal
+        Modal,
+        card
     },
     mounted() {
         this.$store.dispatch('GET_PREDICTION').then(()=>{
